@@ -1,0 +1,20 @@
+package com.hoodinahi.store.Payments;
+
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
+import org.springframework.stereotype.Component;
+
+import com.hoodinahi.store.common.SecuirtyRules;
+
+@Component
+public class PaymentSecurityRules implements SecuirtyRules {
+
+    @Override
+    public void configure(
+            AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry registry) {
+        // TODO Auto-generated method stub
+        registry.requestMatchers(HttpMethod.POST, "/checkout/webhook").permitAll();
+    }
+
+}
